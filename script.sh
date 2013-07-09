@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export KEY=$(cat key.txt)
+export TOTAL=$(cat input.txt | wc -l | sed -e 's/^[ \t]*//')
 export VIDEOS=$(cat input.txt)
 export PAID_URL="http://media.railscasts.com/assets/subscriptions"
 export FREE_URL="http://media.railscasts.com/assets/episodes/videos"
@@ -52,11 +53,12 @@ function download_ep {
 
 # Main function
 function main {
-  bold "Downloading $(cat input.txt | wc -l) videos...\n\n"
-
+  bold "Downloading ${TOTAL} videos...\n\n"
+  export INDEX=1
   for video in $VIDEOS; do
-    bold "\nDownloading ${video}..."
+    bold "\n(${INDEX}/${TOTAL}) Downloading ${video}... \t"
     download_ep $video
+    INDEX=$((${INDEX} + 1))
   done
 
   green "All done!"
