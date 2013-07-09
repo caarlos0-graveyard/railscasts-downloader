@@ -26,12 +26,12 @@ function _wget {
 
 # function which is responsible to download free eps
 function download_free_ep {
-  _wget "${PAID_URL}/${KEY}/videos/${1}.mp4"
+  _wget "${FREE_URL}/${1}.mp4"
 }
 
 # function which is responsible to download paid/pro/etc eps
 function download_paid_ep {
-  _wget "${FREE_URL}/${1}.mp4"
+  _wget "${PAID_URL}/${KEY}/videos/${1}.mp4"
 }
 
 # treat erros, logging files which doesn't download to an errors.txt file
