@@ -4,7 +4,7 @@
 For now, you will have to run this script in each http://railscasts.com/?page=NUMBER
 and copy the results to input.txt.
 
-The first 100 counting from Jun 16, 2013 is already done.
+The first 100 counting from Jun 16, 2013 are already done.
 */
 var eps = '/episodes/';
 $('h2 a[href^="/episodes"]').each(function () {
