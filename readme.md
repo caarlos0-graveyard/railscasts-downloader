@@ -17,7 +17,7 @@ like:
 
 `http://media.railscasts.com/assets/subscriptions/{KEY}/videos/{EP_NAME}.${FORMAT}`
 
-You can pay for the pro videos in railscasts site. It totally worth it.
+You can pay for the PRO videos in railscasts site.
 
 # Downloading
 
