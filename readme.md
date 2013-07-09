@@ -1,8 +1,10 @@
 # RailsCasts downloader
 
-**It is not intended by this repository to incentive and/or do piracy. I use
-this script to download the videos for myself and wath them later in my lunch
-time. To download private videos, you will have to provide your KEY.**
+## Disclaimer
+
+**It's not intended by this repository to incentive and/or do piracy. I use
+this script to download the videos for myself and watch them later in my lunch
+time and bus. To download PRO videos, you will have to provide your KEY.**
 
 ![print](http://f.cl.ly/items/0D2x1k060B0g0e3o2C0j/Screen%20Shot%202013-07-08%20at%2011.57.40%20PM.png)
 
@@ -19,15 +21,17 @@ You can pay for the pro videos in railscasts site. It totally worth it.
 
 # Downloading
 
-Create an `input.txt` file with the EPs number (leftpadded with zeroes to length
-3) and the EP name, like:
+There is already a node.js script called `extractor`, which will generate the
+`input.txt` file with all EPs. Sooner I'll implement the download by EP number
+as suggested in Ruby on Rails Brasil Facebook page. For now, you will have to
+handle it manually or download all EPs.
 
-```
-417-foundation
-123-some-other-ep
-001-the-very-first-one
-```
+Run `./script.sh` to download all EPs specified in `input.txt`.
 
-Then run the `.sh` file in a folder where you have sufficient disk space.
+# Thanks
 
-That's it.
+Thanks Ryan Bates for the great videos and great site, with a solid API.
+
+# Donate
+
+Please, donate to Ryan instead, or just get a PRO account. It totally worth!
