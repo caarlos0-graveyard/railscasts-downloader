@@ -6,7 +6,7 @@
 this script to download the videos for myself and watch them later in my lunch
 time and bus. To download PRO videos, you will have to provide your KEY.**
 
-![print](http://f.cl.ly/items/0D2x1k060B0g0e3o2C0j/Screen%20Shot%202013-07-08%20at%2011.57.40%20PM.png)
+![print](http://f.cl.ly/items/3f2T130z3t2E2g1E2p1X/Screen%20Shot%202013-07-09%20at%202.23.25%20AM.png)
 
 # Usage
 
