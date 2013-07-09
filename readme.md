@@ -34,4 +34,4 @@ Thanks Ryan Bates for the great videos and great site, with a solid API.
 
 # Donate
 
-Please, donate to Ryan instead, or just get a PRO account. It totally worth!
+Please, donate to Ryan instead, or just get a PRO account. It's worth it!
