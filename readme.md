@@ -4,6 +4,8 @@
 this script to download the videos for myself and wath them later in my lunch
 time. To download private videos, you will have to provide your KEY.**
 
+![print](http://f.cl.ly/items/0D2x1k060B0g0e3o2C0j/Screen%20Shot%202013-07-08%20at%2011.57.40%20PM.png)
+
 # Usage
 
 To download PRO videos, create a `key.txt` file with your API key in it.
