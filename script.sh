@@ -1,8 +1,6 @@
 #!/bin/bash
 
 export KEY=$(cat key.txt)
-export TOTAL=$(cat input.txt | wc -l | sed -e 's/^[ \t]*//')
-export VIDEOS=$(cat input.txt)
 export PAID_URL="http://media.railscasts.com/assets/subscriptions"
 export FREE_URL="http://media.railscasts.com/assets/episodes/videos"
 
@@ -51,6 +49,19 @@ function download_ep {
   error_treatment ${1}
 }
 
+# load eps from arguments if given.
+function loadEps {
+  if [[ -z "$@" ]]; then
+    CAT=$(cat input.txt)
+  else
+    eps=$(printf " -e %s" "${@}")
+    CAT="$(cat input.txt | grep -i${eps})"
+  fi
+  count=$(echo "${CAT}" | wc -l)
+  export TOTAL=$(echo ${count} | sed -e 's/^[ \t]*//')
+  export VIDEOS=${CAT}
+}
+
 # Main function
 function main {
   bold "Downloading ${TOTAL} videos...\n\n"
@@ -65,4 +76,5 @@ function main {
 }
 
 # RUN FORREST RUN!
+loadEps ${@}
 main

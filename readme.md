@@ -15,9 +15,12 @@ To download PRO videos, create a `key.txt` file with your API key in it.
 You can found your API while downloading a PRO video, the URL will be something
 like:
 
-`http://media.railscasts.com/assets/subscriptions/{KEY}/videos/{EP_NAME}.${FORMAT}`
+```
+http://media.railscasts.com/assets/subscriptions/{KEY}/videos/{EP_NAME}.{FORMAT}
+                                                   /\ this is the  key =)
+```
 
-You can pay for the PRO videos in railscasts site.
+You can buy a PRO railscasts account in [railscast site](http://railscasts.com).
 
 # Downloading
 
@@ -26,7 +29,20 @@ There is already a node.js script called `extractor`, which will generate the
 as suggested in Ruby on Rails Brasil Facebook page. For now, you will have to
 handle it manually or download all EPs.
 
-Run `./script.sh` to download all EPs specified in `input.txt`.
+Run `./script.sh` to download all EPs specified in `input.txt` or run
+`./script.sh 123 321 234` to download episodes 123, 321 and 234.
+
+I will try to keep input updated, if you want to update it by yourself, cd to
+extractor dir and run:
+
+```
+npm install
+./script.js
+```
+
+It will automagically update your `input.txt` file.
+
+Enjoy.
 
 # Thanks
 
