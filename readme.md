@@ -25,15 +25,13 @@ You can buy a PRO railscasts account in [railscast site](http://railscasts.com).
 # Downloading
 
 There is already a node.js script called `extractor`, which will generate the
-`input.txt` file with all EPs. Sooner I'll implement the download by EP number
-as suggested in Ruby on Rails Brasil Facebook page. For now, you will have to
-handle it manually or download all EPs.
+`input.txt` file with all EPs.
 
 Run `./script.sh` to download all EPs specified in `input.txt` or run
 `./script.sh 123 321 234` to download episodes 123, 321 and 234.
 
-I will try to keep input updated, if you want to update it by yourself, cd to
-extractor dir and run:
+I will try to keep `input.txt` file updated, but, if you want to update it
+by yourself, just `cd` to `extractor` folder and run:
 
 ```
 npm install
@@ -46,7 +44,7 @@ Enjoy.
 
 # Thanks
 
-Thanks Ryan Bates for the great videos and great site, with a solid API.
+Thanks Ryan Bates for the great videos, great site and great API.
 
 # Donate
 
