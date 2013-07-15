@@ -1,8 +1,30 @@
 #!/bin/bash
 
-export KEY=$(cat key.txt)
+export KEY=$(cat key.txt 2> /dev/null)
 export PAID_URL="http://media.railscasts.com/assets/subscriptions"
 export FREE_URL="http://media.railscasts.com/assets/episodes/videos"
+
+echo -e "\n"
+
+if [[ -z $KEY ]]; then
+  cat <<EOF
+You had not provided any KEY.
+To do that, put your API KEY in a key.txt file in this folder.
+You will not be able do download PRO videos.
+EOF
+fi
+
+# video format
+if [[ -z $FORMAT ]]; then
+  export FORMAT="mp4"
+fi
+cat <<EOF
+Downloading the videos in ${FORMAT} format.
+Avaliable formats are mp4, m4v, ogv and webm.
+To change the used format, run the script as:
+
+FORMAT="ogv" ${0}
+EOF
 
 # green echo
 function green {
@@ -18,6 +40,10 @@ function bold {
   echo -e "\033[1;30m${@}\033[0m"
 }
 
+echo -e "\n\n"
+bold "-------------------------------"
+echo -e "\n\n"
+
 # Custom wget command, with continue and quiet options, as well path specification
 function _wget {
   wget -c ${1} -P videos --quiet
@@ -25,20 +51,20 @@ function _wget {
 
 # function which is responsible to download free eps
 function download_free_ep {
-  _wget "${FREE_URL}/${1}.mp4"
+  _wget "${FREE_URL}/${1}.${FORMAT}"
 }
 
 # function which is responsible to download paid/pro/etc eps
 function download_paid_ep {
-  _wget "${PAID_URL}/${KEY}/videos/${1}.mp4"
+  _wget "${PAID_URL}/${KEY}/videos/${1}.${FORMAT}"
 }
 
 # treat erros, logging files which doesn't download to an errors.txt file
 function error_treatment {
   if (( $? == 0 )); then
-    green "---> 🍺  Successfully downloaded ${1}!"
+    green "---> 🍺  Successfully downloaded ${1}.${FORMAT}!"
   else
-    red "---> 😭  Fail to download ${1} =("
+    red "---> 😭  Fail to download ${1}.${FORMAT} =("
     echo ${0} >> errors.txt
   fi
 }
