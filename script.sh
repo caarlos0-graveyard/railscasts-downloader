@@ -37,7 +37,7 @@ function red {
 }
 
 function bold {
-  echo -e "\033[1;30m${@}\033[0m"
+  echo -e "\033[1m${@}\033[0m"
 }
 
 echo -e "\n\n"
