@@ -44,29 +44,57 @@ echo -e "\n\n"
 bold "-------------------------------"
 echo -e "\n\n"
 
+# Return value if the file to download already exists
+FILE_ALREADY_EXISTS=100
+
 # Custom wget command, with continue and quiet options, as well path specification
 function _wget {
   wget -c ${1} -P videos --quiet
 }
+# Custom aria2 command, download each file using 16 parallel connections
+# _aria2c URL filename
+function _aria2c {
+  # if the file to download already exists and there isn't the corresponding
+  # aria2 file, so the download is completed
+  if [ -e videos/${2} ] && [ ! -e videos/${2}.aria2 ]; then
+    return $FILE_ALREADY_EXISTS
+  fi
+  aria2c -s16 --dir videos --quiet --auto-file-renaming=false ${1}
+}
+
+function download {
+  # if there is aria2, use it!
+  if [ -n "`which aria2c`" ]; then
+    _aria2c ${1} ${2}
+  else
+    _wget ${1}
+  fi
+}
 
 # function which is responsible to download free eps
 function download_free_ep {
-  _wget "${FREE_URL}/${1}.${FORMAT}"
+  download "${FREE_URL}/${1}.${FORMAT}" "${1}.${FORMAT}"
 }
 
 # function which is responsible to download paid/pro/etc eps
 function download_paid_ep {
-  _wget "${PAID_URL}/${KEY}/videos/${1}.${FORMAT}"
+  download "${PAID_URL}/${KEY}/videos/${1}.${FORMAT}" "${1}.${FORMAT}"
 }
 
 # treat erros, logging files which doesn't download to an errors.txt file
 function error_treatment {
-  if (( $? == 0 )); then
-    green "---> 🍺  Successfully downloaded ${1}.${FORMAT}!"
-  else
-    red "---> 😭  Fail to download ${1}.${FORMAT} =("
-    echo ${0} >> errors.txt
-  fi
+  case "$?" in
+    0)
+      green "---> 🍺  Successfully downloaded ${1}.${FORMAT}!"
+      ;;
+    $FILE_ALREADY_EXISTS)
+      green "---> 🍺  File already exists! Skipping!"
+      ;;
+    *)
+      red "---> 😭  Fail to download ${1}.${FORMAT} =("
+      echo ${0} >> errors.txt
+      ;;
+  esac
 }
 
 # try to download an Ep
