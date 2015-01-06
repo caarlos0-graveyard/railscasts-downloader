@@ -64,7 +64,7 @@ function _aria2c {
 
 function download {
   # if there is aria2, use it!
-  if [ -n "`which aria2c`" ]; then
+  if [ -n "$(which aria2c)" ]; then
     _aria2c ${1} ${2}
   else
     _wget ${1}
