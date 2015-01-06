@@ -42,6 +42,12 @@ It will automagically update your `input.txt` file.
 
 Enjoy.
 
+# Size?
+
+- Free: 346 episodes = 6.1 GB
+- Pro: 140 episodes = 4.9 GB (including revised ones)
+- Total: 486 episodes = 11 GB
+
 # Thanks
 
 Thanks Ryan Bates for the great videos, great site and great API.
