@@ -5,6 +5,7 @@ var fs = require('fs')
   , http = require('http');
 
 var MAX_PAGE = 48
+  , INPUT_FILE = '../input.txt'
   , EPS = '/episodes/';
 
 // get all pages
@@ -50,19 +51,31 @@ var appendEpName = function (href) {
     , newEpName = number + name;
 
   console.log('Found EP "%s"', newEpName);
-  fs.appendFile('../input.txt', newEpName + '\n', function (err) {
+  fs.appendFile(INPUT_FILE, newEpName + '\n', function (err) {
     if (err) {
       console.error('Failed to append ' + newEpName + ' to input file!');
     }
   });
 }
 
+var sortEntries = function () {
+  console.log('Sorting inputs...');
+  fs.readFile(INPUT_FILE, function (err, data) {
+    if (err) {
+      throw err;
+    }
+    var text = data.toString().split('\n').sort().reverse().join('\n') + '\n';
+    fs.writeFileSync(INPUT_FILE, text);
+  });
+}
+
 if (require.main == module) {
-  fs.unlink('../input.txt', function (err) {
+  fs.unlink(INPUT_FILE, function (err) {
     getPages();
   });
 } else {
   exports.getPages = getPages;
+  exports.sortEntries = sortEntries;
 }
 
 
